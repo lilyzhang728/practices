@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滚轮事件练习</title>
+</head>
+<body>
+
+<img src="images/111952_large.png" id="img">
+<p id="demo"></p>
+
+<script type="text/javascript">
+    var image = document.getElementById("img");
+    image.addEventListener("mousewheel",myFunc);
+
+    //兼容Firefox浏览器
+    image.addEventListener("DOMMouseScroll",myFunc);
+
+    function myFunc(e){
+        var delta = Math.max(-1,Math.min(1,(e.wheelDelta || -e.detail)));
+        image.style.width = Math.max(20,Math.min(400,image.width+30*delta))+"px";
+        document.getElementById("demo").innerHTML = "鼠标滚轮的滚动量" + e.deltaY;    
+    }
+</script>
+    
+</body>
+</html>
